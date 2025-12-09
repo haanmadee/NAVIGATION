@@ -1,0 +1,57 @@
+<style>
+  /* Container untuk scroll horizontal */
+  .nav-scroll-container {
+    display: flex;
+    overflow-x: auto;
+    white-space: nowrap;
+    gap: 10px; /* Jarak antar tombol */
+    padding: 10px 5px; 
+    -webkit-overflow-scrolling: touch; /* Efek smooth di iOS */
+    scrollbar-width: none; /* Sembunyikan scrollbar Firefox */
+    
+    /* PENTING: Membuat navigasi menempel di atas */
+    position: sticky; 
+    top: 0; 
+    z-index: 9999; /* Pastikan selalu berada di atas semua konten */
+    background: #0d1420; /* Latar belakang solid agar konten di bawah tidak terlihat */
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.4); /* Memberi kesan tombol terangkat */
+  }
+
+  /* Sembunyikan scrollbar di Chrome/Safari */
+  .nav-scroll-container::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Gaya Tombol (Rounded Pill, Gradient, Compact) */
+  .nav-pill-btn {
+    display: inline-block;
+    /* Gradient yang diminta: #141e30 ke #243b55 */
+    background: linear-gradient(90deg, #141e30 0%, #243b55 100%);
+    color: #ffffff !important;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 8px 16px;
+    border-radius: 50px; /* Rounded pill */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    transition: transform 0.2s;
+    border: none;
+    cursor: pointer;
+  }
+
+  .nav-pill-btn:active {
+    transform: scale(0.95);
+  }
+
+  /* Smooth Scroll Global untuk halaman (membuat perpindahan tombol halus) */
+  html {
+    scroll-behavior: smooth;
+  }
+</style>
+
+<div class="nav-scroll-container">
+  <a href="#section-remote" class="nav-pill-btn">Remote Work</a>
+  <a href="#section-branding" class="nav-pill-btn">Personal Branding</a>
+  <a href="#section-posters" class="nav-pill-btn">Posters</a>
+  <a href="#section-worksheet" class="nav-pill-btn">Worksheet</a>
+</div>
