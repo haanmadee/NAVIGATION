@@ -4,30 +4,22 @@
     display: flex;
     overflow-x: auto;
     white-space: nowrap;
-    gap: 12px; /* Sedikit renggangkan agar efek bayangan tidak bertumpuk */
-    padding: 10px 5px 15px 5px; /* Padding bawah ditambah agar bayangan tombol tidak terpotong */
+    gap: 12px;
+    padding: 10px 5px 15px 5px;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
-    
-    /* PENTING: Sticky tetap ada, tapi background transparan */
     position: sticky; 
     top: 0; 
     z-index: 9999;
-    background: transparent; /* Tidak ada background */
-    box-shadow: none; /* Tidak ada bayangan pada baris container */
+    background: transparent;
   }
+  .nav-scroll-container::-webkit-scrollbar { display: none; }
 
-  /* Sembunyikan scrollbar */
-  .nav-scroll-container::-webkit-scrollbar {
-    display: none;
-  }
-
-  /* Gaya Tombol 3D */
+  /* Gaya Tombol */
   .nav-pill-btn {
     display: inline-block;
     background: linear-gradient(90deg, #141e30 0%, #243b55 100%);
     color: #ffffff !important;
-    text-decoration: none;
     font-size: 12px;
     font-weight: 600;
     padding: 8px 18px;
@@ -35,36 +27,31 @@
     border: none;
     cursor: pointer;
     position: relative;
-    
-    /* KUNCI EFEK 3D (Tidak Flat) */
-    /* Memberikan "ketebalan" pada tombol di bagian bawah */
     box-shadow: 0 4px 0px #0a0f18; 
-    transition: all 0.1s ease; /* Transisi cepat untuk efek klik yang responsif */
-    top: 0; /* Posisi awal */
+    transition: all 0.1s ease;
+    top: 0;
   }
-
-  /* Efek Hover (Opsional: Sedikit lebih terang atau naik) */
-  .nav-pill-btn:hover {
-    filter: brightness(1.1); /* Sedikit lebih terang saat di-hover */
-  }
-
-  /* EFEK KLIK (Saat tombol ditekan) */
   .nav-pill-btn:active {
-    /* Tombol bergerak ke bawah seolah ditekan */
     top: 4px; 
-    
-    /* Bayangan "ketebalan" hilang karena tombol menekan ke dalam */
     box-shadow: 0 0 0px #0a0f18; 
-  }
-
-  html {
-    scroll-behavior: smooth;
   }
 </style>
 
 <div class="nav-scroll-container">
-  <a href="#section-remote" class="nav-pill-btn">Remote Work</a>
-  <a href="#section-branding" class="nav-pill-btn">Personal Branding</a>
-  <a href="#section-posters" class="nav-pill-btn">Posters</a>
-  <a href="#section-worksheet" class="nav-pill-btn">Worksheet</a>
+  <button onclick="scrollToTarget('section-remote')" class="nav-pill-btn">Remote Work</button>
+  <button onclick="scrollToTarget('section-branding')" class="nav-pill-btn">Personal Branding</button>
+  <button onclick="scrollToTarget('section-posters')" class="nav-pill-btn">Posters</button>
+  <button onclick="scrollToTarget('section-worksheet')" class="nav-pill-btn">Worksheet</button>
 </div>
+
+<script>
+  function scrollToTarget(id) {
+    var element = document.getElementById(id);
+    if (element) {
+      // Opsi ini memaksa browser mencari elemen dimanapun dia berada dan scroll ke sana
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+      console.log("Target tidak ditemukan: " + id);
+    }
+  }
+</script>
